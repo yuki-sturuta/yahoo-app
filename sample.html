@@ -10,7 +10,7 @@
         <form name="syohinData">
             <div class="popup" id="js-popup">
                 <div class="popup-inner">
-                    <h3>商品情報を入力してください</h3>
+                    <h2>商品情報を入力してください</h2>
                     <div class="close-btn" id="js-close-btn"><i class="fas fa-times"></i></div>
                     <div class="storeRadio popup-block">
                         <p>商品分類</p><input type="radio" id="tireOnly" name="setName" value="タイヤ4本セット"><span>タイヤのみ</span>
@@ -97,11 +97,11 @@
                 <h4>出品データ一覧</h4>
                 
                     <form name="csvData" class="csvIndex">
-                        <span>管理番号</span><input name="table1_cell_value" id="th_value1" type="text" placeholder="管理番号" onKeyUp="countLength(value, 'textlength');"><span id="textlength">0</span><BR>
-                        <span>タイトル</span><input name="table1_cell_value" id="th_value2" type="text" placeholder="タイトル" onKeyUp="countLength(value, 'textlength2');"><span id="textlength2">0</span><BR>
+                        <span>管理番号</span><input name="table1_cell_value" id="th_value1" type="text" placeholder="管理番号" onkeyup="countLength(value, 'countText')"><span id="countText">0</span><BR>
+                        <span>タイトル</span><input name="table1_cell_value" id="th_value2" type="text" placeholder="タイトル" onkeyup="getLen(value, 'fontCount')"><span id="fontCount">0</span><BR>
                         <span>カテゴリー</span><input name="table1_cell_value" id="th_value3" type="text" placeholder="カテゴリ" value="2084199052"><BR>
                         <span class="descripton">説明</span><textarea name="table1_cell_value" id="th_value4" placeholder="説明"></textarea><BR>
-                        <span>ストア検索用キーワード</span><input name="table1_cell_value" id="th_value5" type="text" placeholder="ストア内商品検索用キーワード"><BR>
+                        <span>ストア検索用キーワード</span><input name="table1_cell_value" id="th_value5" type="text" placeholder="ストア内商品検索用キーワード"onkeyup="getLen(value, 'countText2')"><span id="countText2">0</span><BR>
                         <span>商品の状態</span><input name="table1_cell_value" id="th_value6" type="text" placeholder="商品の状態"><BR>
                         <span>開始価格・即決価格</span><input name="table1_cell_value" id="th_value7" type="text" placeholder="開始価格">
                         <input name="table1_cell_value" id="th_value8" type="text" placeholder="即決価格" value="0"><br>

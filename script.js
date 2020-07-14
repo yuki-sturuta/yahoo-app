@@ -1,8 +1,56 @@
+    //フォームのEnter入力を無効
+    document.onkeypress = enter;
+    function enter(){
+      if( window.event.keyCode == 13 ){
+        return false;
+      }
+    }
+    //出力先フォームのID
+    var th_value1 = document.getElementById('th_value1');//管理番号
+    var th_value2 = document.getElementById('th_value2');//タイトル
+    var th_value4 = document.getElementById('th_value4');//商品説明(HTML)
+    var th_value5 = document.getElementById('th_value5');//ストア検索用キーワード
+    var th_value6 = document.getElementById('th_value6');//商品の状態
+    var th_value7 = document.getElementById('th_value7');//開始価格
+    var th_value8 = document.getElementById('th_value8');//即決価格
+    var th_value25 = document.getElementById('th_value25');//配送方法・送料設定
+
+
     //文字数のカウント
     function countLength( text, field ) {
-
         document.getElementById(field).innerHTML = text.length;
+        if (text.length > 20) {
+            th_value1.style.backgroundColor = "red";
+        }else{
+            th_value1.style.backgroundColor = "";
+        }
     }
+
+    function getLen(text, field){
+      var result = 0;
+      for(var i=0;i<text.length;i++){
+        var chr = text.charCodeAt(i);
+        if((chr >= 0x00 && chr < 0x81) ||
+           (chr === 0xf8f0) ||
+           (chr >= 0xff61 && chr < 0xffa0) ||
+           (chr >= 0xf8f1 && chr < 0xf8f4)){
+          //半角文字の場合は1を加算
+          result += 0.5;
+        }else{
+          //それ以外の文字の場合は2を加算
+          result += 1;
+        }
+      }
+
+      document.getElementById(field).innerText = result;
+      if (result > 60 ) {
+          th_value2.style.backgroundColor = "red";
+      }else{
+          th_value2.style.backgroundColor = "";
+      }
+    };
+
+
 
     //起動時商品情報入力項目
     var defaultHTML = document.getElementById('itemText').innerHTML;
@@ -35,7 +83,8 @@
         // ストア内商品検索キーワード
         codeS = document.getElementById('storeCode').value;
         if (codeS !== "") {
-            document.getElementById('th_value5').value = codeS;
+            th_value5.value = codeS;
+            // getLen( codeS, countText2);
         }else{
             alert('商品コードを入力してください');
             return false;
@@ -49,13 +98,15 @@
         //管理番号
         storeNameS = storeSelect.value;
         controlNumber = codeS.replace(/\s+/g, "") + storeNameS;
-        document.getElementById('th_value1').value = controlNumber;
+        th_value1.value = controlNumber;
         document.getElementById('itemCode').innerText = controlNumber;
+        countLength( controlNumber, 'countText' );
+
 
         //開始価格
         var startPrice = document.getElementById('startPrice').value.replace(/\s+/g, "");
         if (startPrice !== "") {
-        document.getElementById('th_value7').value = startPrice;
+            th_value7.value = startPrice;
         }else{
             alert('開始価格を入力してください');
             return false;
@@ -64,7 +115,7 @@
         //終了価格
         var finishPrice = document.getElementById('finishPrice').value.replace(/\s+/g, "");
         if (finishPrice !== "") {
-            document.getElementById('th_value8').value = finishPrice;
+            th_value8.value = finishPrice;
         }
 
         //商品の状態を出力する
@@ -72,7 +123,7 @@
         var productOption = productStatus.selectedIndex;
         var productText = productStatus.options[productOption].text;
         if (productOption !== 0) {
-            document.getElementById('th_value6').value = productStatus.value;
+            th_value6.value = productStatus.value;
             document.getElementById('itemRank').insertAdjacentHTML('beforeend',productText );
         }else{
             alert('状態(ランク)を選択してください。');
@@ -84,7 +135,7 @@
         var ShpMtoOption = ShippingMethod.selectedIndex;
         if (ShpMtoOption !== 0) {
             var postageCode = ShippingMethod.options[ShpMtoOption].value; 
-            document.getElementById('th_value25').value = postageCode;
+            th_value25.value = postageCode;
          
             for( key in postageImage ) {
                 if( key == postageCode ) {
@@ -201,8 +252,9 @@
             }
 
         var titleText = titleArray.join(" ");
-        document.getElementById('th_value2').value = titleText;
+        th_value2.value = titleText;
         document.getElementById('itemProduct').innerText = titleText;
+        // getLen(titleText, fontCount);
         
 
         //商品説明欄への出力(HTML形式)
@@ -216,7 +268,7 @@
         //商品説明欄のHTMLを文字列に変換
         var itemText = document.getElementById('itemText');
         itemText = itemText.innerHTML.replace(/\r?\n/g,'').replace(/&lt;/g, "<").replace(/&gt;/g, ">");   
-        document.getElementById('th_value4').value = itemText;
+        th_value4.value = itemText;
     
         //送信後にポップアップを閉じる
         var submitClose = document.getElementById('js-popup');

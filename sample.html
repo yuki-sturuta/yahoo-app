@@ -13,13 +13,13 @@
                     <h2>商品情報を入力してください</h2>
                     <div class="close-btn" id="js-close-btn"><i class="fas fa-times"></i></div>
                     <div class="storeRadio popup-block">
-                        <p>商品分類</p><input type="radio" id="tireOnly" name="setName" value="タイヤ4本セット"><span>タイヤのみ</span>
+                        <p class="required">商品分類</p><input type="radio" id="tireOnly" name="setName" value="タイヤ4本セット"><span>タイヤのみ</span>
                         <input type="radio" id="wheelOnly" name="setName" value="アルミホイール4本セット"><span>ホイールのみ</span>
                         <input type="radio" id="TWSet" name="setName" value="タイヤホイール4本セット"><span>タイヤホイールセット</span>
                         <input type="radio" id="other" name="setName" value=""><span>小物</span>
                     </div>
                     <div class="popup-block">
-                        <p>商品コード</p><input type="text" name="storeCode" id="storeCode" placeholder="JANまたはインストア" autocomplete="off"><br>
+                        <p class="required">商品コード</p><input type="text" name="storeCode" id="storeCode" placeholder="JANまたはインストア" autocomplete="off"><br>
                         <p>店舗名</p><select id="storeName" name="storeName">
                             <option></option>
                             <option name="turu" value="-tr">都留店</option>
@@ -53,7 +53,7 @@
                         <p>備考</p><input type="text" id="remarks" autocomplete="off">
                     </div>
                     <div class="popup-block"><h3>出品設定</h3>
-                        <p>商品の状態</p><select id="productStatus" name="productStatus">
+                        <p class="required">商品の状態</p><select id="productStatus" name="productStatus">
                             <option>選択してください</option>
                             <option value="未使用">S(未使用)</option>
                             <option value="未使用に近い">A(未使用に近い)</option>
@@ -62,8 +62,8 @@
                             <option value="傷や汚れあり">D(傷や汚れあり)</option>
                             <option value="全体的に状態が悪い">E(全体的に状態が悪い)</option>
                         </select><br>
-                        <p>価格</p><input type="text" id="startPrice" placeholder="開始価格">
-                        <input type="text" id="finishPrice" placeholder="終了価格"><br>
+                        <p class="required">価格</p><input type="text" id="startPrice" placeholder="開始価格" autocomplete="off">
+                        <input type="text" id="finishPrice" placeholder="終了価格" autocomplete="off"><br>
                         <p>配送方法</p><select id="ShippingMethod">
                             <option value="">選択してください</option>
                             <option value="B4">80s 小型</option>
@@ -97,15 +97,15 @@
                 <h4>出品データ一覧</h4>
                 
                     <form name="csvData" class="csvIndex">
-                        <span>管理番号</span><input name="table1_cell_value" id="th_value1" type="text" placeholder="管理番号" onkeyup="countLength(value, 'countText')"><span id="countText">0</span><BR>
-                        <span>タイトル</span><input name="table1_cell_value" id="th_value2" type="text" placeholder="タイトル" onkeyup="getLen(value, 'fontCount')"><span id="fontCount">0</span><BR>
-                        <span>カテゴリー</span><input name="table1_cell_value" id="th_value3" type="text" placeholder="カテゴリ" value="2084199052"><BR>
-                        <span class="descripton">説明</span><textarea name="table1_cell_value" id="th_value4" placeholder="説明"></textarea><BR>
-                        <span>ストア検索用キーワード</span><input name="table1_cell_value" id="th_value5" type="text" placeholder="ストア内商品検索用キーワード"onkeyup="getLen(value, 'countText2')"><span id="countText2">0</span><BR>
-                        <span>商品の状態</span><input name="table1_cell_value" id="th_value6" type="text" placeholder="商品の状態"><BR>
-                        <span>開始価格・即決価格</span><input name="table1_cell_value" id="th_value7" type="text" placeholder="開始価格">
-                        <input name="table1_cell_value" id="th_value8" type="text" placeholder="即決価格" value="0"><br>
-                        <span>配送方法・送料設定</span><input type="text" name="table1_cell_value" id="th_value25" placeholder="配送方法・送料設定"><br>
+                        <span>管理番号</span><input name="table1_cell_value" id="th_value1" type="text" placeholder="管理番号" autocomplete="off" onkeyup="countLength(value, 'countText')"><span id="countText" class="count-block">0</span><span class="count-block">/20</span><BR>
+                        <span>タイトル</span><input name="table1_cell_value" id="th_value2" type="text" placeholder="タイトル" autocomplete="off" onkeyup="getLen(value, 'fontCount')"><span id="fontCount" class="count-block">0</span><span class="count-block">/60</span><BR>
+                        <span>カテゴリー</span><input name="table1_cell_value" id="th_value3" type="text" placeholder="カテゴリ" autocomplete="off" value="2084199052"><BR>
+                        <span class="descripton">説明</span><textarea name="table1_cell_value" id="th_value4" placeholder="説明" autocomplete="off"></textarea><BR>
+                        <span>ストア検索用キーワード</span><input name="table1_cell_value" id="th_value5" type="text" placeholder="ストア内商品検索用キーワード" autocomplete="off" onkeyup="getLen(value, 'countText2')"><span id="countText2" class="count-block">0</span><span class="count-block">/20</span><BR>
+                        <span>商品の状態</span><input name="table1_cell_value" id="th_value6" type="text" placeholder="商品の状態" autocomplete="off"><BR>
+                        <span>開始価格・即決価格</span><input name="table1_cell_value" id="th_value7" type="text" placeholder="開始価格" autocomplete="off">
+                        <input name="table1_cell_value" id="th_value8" type="text" placeholder="即決価格" value="0" autocomplete="off"><br>
+                        <span>配送方法・送料設定</span><input type="text" name="table1_cell_value" id="th_value25" placeholder="配送方法・送料設定" autocomplete="off"><br>
                         <span>開催期間</span><select name="table1_cell_value" id="th_value9" type="text" placeholder="期間">
                             <option>2</option>
                             <option>3</option>
@@ -114,25 +114,25 @@
                             <option>6</option>
                             <option selected>7</option>
                         </select>
-                        <input name="table1_cell_value" id="th_value10" type="text" placeholder="終了時間" value="0"><br>
-                        <span>個数</span><input name="table1_cell_value" id="th_value11" type="text" placeholder="個数" value="1"><br>
-                        <span>発送元</span><input name="table1_cell_value" id="th_value12" type="text" placeholder="商品発送元の都道府県" value="山梨県"><br>
-                        <span>送料負担</span><input name="table1_cell_value" id="th_value13" type="text" placeholder="送料負担" value="落札者"><br>
-                        <span>代金の支払い</span><input name="table1_cell_value" id="th_value14" type="text" placeholder="代金先払い、後払い" value="代金先払い"><br>
-                        <span>決済方法</span><input name="table1_cell_value" id="th_value15" type="text" placeholder="落札ナビ決済方法設定" value="A1_C1"><br>
-                        <span>消費税設定</span><input name="table1_cell_value" id="th_value16" type="text" placeholder="消費税設定" value="T1"><br>
-                        <span>返品</span><input name="table1_cell_value" id="th_value17" type="text" placeholder="返品の可否" value="返品不可"><br>
-                        <span>最低評価制限</span><input name="table1_cell_value" id="th_value18" type="text" placeholder="最低評価" value="0"><br>
-                        <span>悪評価制限</span><input name="table1_cell_value" id="th_value19" type="text" placeholder="悪評割合制限" value="はい"><br>
-                        <span>認証制限</span><input name="table1_cell_value" id="th_value20" type="text" placeholder="入札者認証制限" value="はい"><br>
-                        <span>自動延長</span><input name="table1_cell_value" id="th_value21" type="text" placeholder="自動延長" value="はい"><br>
-                        <span>値下げ交渉</span><input name="table1_cell_value" id="th_value22" type="text" placeholder="値下げ交渉" value="いいえ"><br>
-                        <span>自動再出品</span><input name="table1_cell_value" id="th_value23" type="text" placeholder="商品の自動再出品" value="3"><br>
-                        <span>代引手数料</span><input name="table1_cell_value" id="th_value24" type="text" placeholder="代引手数料設定" value="A1"><br>
+                        <input name="table1_cell_value" id="th_value10" type="text" placeholder="終了時間" value="0" autocomplete="off"><br>
+                        <span>個数</span><input name="table1_cell_value" id="th_value11" type="text" placeholder="個数" autocomplete="off" value="1"><br>
+                        <span>発送元</span><input name="table1_cell_value" id="th_value12" type="text" placeholder="商品発送元の都道府県" autocomplete="off" value="山梨県"><br>
+                        <span>送料負担</span><input name="table1_cell_value" id="th_value13" type="text" placeholder="送料負担" autocomplete="off" value="落札者"><br>
+                        <span>代金の支払い</span><input name="table1_cell_value" id="th_value14" type="text" placeholder="代金先払い、後払い" autocomplete="off" value="代金先払い"><br>
+                        <span>決済方法</span><input name="table1_cell_value" id="th_value15" type="text" placeholder="落札ナビ決済方法設定" autocomplete="off" value="A1_C1"><br>
+                        <span>消費税設定</span><input name="table1_cell_value" id="th_value16" type="text" placeholder="消費税設定" autocomplete="off" value="T1"><br>
+                        <span>返品</span><input name="table1_cell_value" id="th_value17" type="text" placeholder="返品の可否" autocomplete="off" value="返品不可"><br>
+                        <span>最低評価制限</span><input name="table1_cell_value" id="th_value18" type="text" placeholder="最低評価" autocomplete="off" value="0"><br>
+                        <span>悪評価制限</span><input name="table1_cell_value" id="th_value19" type="text" placeholder="悪評割合制限" autocomplete="off" value="はい"><br>
+                        <span>認証制限</span><input name="table1_cell_value" id="th_value20" type="text" placeholder="入札者認証制限" autocomplete="off" value="はい"><br>
+                        <span>自動延長</span><input name="table1_cell_value" id="th_value21" type="text" placeholder="自動延長" autocomplete="off" value="はい"><br>
+                        <span>値下げ交渉</span><input name="table1_cell_value" id="th_value22" type="text" placeholder="値下げ交渉" autocomplete="off" value="いいえ"><br>
+                        <span>自動再出品</span><input name="table1_cell_value" id="th_value23" type="text" placeholder="商品の自動再出品" autocomplete="off" value="3"><br>
+                        <span>代引手数料</span><input name="table1_cell_value" id="th_value24" type="text" placeholder="代引手数料設定" autocomplete="off" value="A1"><br>
                         <div class="btn-group">
                             <button type="button" onclick="add_line()">追加</button>
-                            <button class="form-back" onclick="addpop()">商品入力に戻る</button>
-                            <input type="reset" value="リセット">
+                            <button type="button" class="form-back" onclick="addpop()">商品入力に戻る</button>
+                            <input type="reset" value="リセット" onclick="countReset()">
                         </div>
                     </form>
 

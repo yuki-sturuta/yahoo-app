@@ -5,6 +5,7 @@
         return false;
       }
     }
+
     //出力先フォームのID
     var th_value1 = document.getElementById('th_value1');//管理番号
     var th_value2 = document.getElementById('th_value2');//タイトル
@@ -15,10 +16,21 @@
     var th_value8 = document.getElementById('th_value8');//即決価格
     var th_value25 = document.getElementById('th_value25');//配送方法・送料設定
 
+    //文字数のカウントのリセット
+    function countReset(){
+        countLength(0,'countText');
+        getLen(0,'fontCount');
+        getLen(0,'countText2');
+    }
 
     //文字数のカウント
     function countLength( text, field ) {
-        document.getElementById(field).innerHTML = text.length;
+        var result = 0;
+        for (var i = 0; i < text.length; i++) {
+            result += 1;
+        }
+
+        document.getElementById(field).innerText = result;
         if (text.length > 20) {
             th_value1.style.backgroundColor = "red";
         }else{
@@ -34,22 +46,27 @@
            (chr === 0xf8f0) ||
            (chr >= 0xff61 && chr < 0xffa0) ||
            (chr >= 0xf8f1 && chr < 0xf8f4)){
-          //半角文字の場合は1を加算
+          //半角文字の場合は0.5を加算
           result += 0.5;
         }else{
-          //それ以外の文字の場合は2を加算
+          //それ以外の文字の場合は1を加算
           result += 1;
         }
       }
-
       document.getElementById(field).innerText = result;
-      if (result > 60 ) {
+
+      if (field == 'fontCount' && result > 60 ) {
           th_value2.style.backgroundColor = "red";
-      }else{
+      }else if (field == 'fontCount' && result <= 60 ){
           th_value2.style.backgroundColor = "";
       }
-    };
 
+      if (field == 'countText2' && result > 20 ) {
+          th_value5.style.backgroundColor = "red";
+      }else if (field == 'countText2' && result <= 20 ){
+          th_value5.style.backgroundColor = "";
+      }
+    }
 
 
     //起動時商品情報入力項目
@@ -65,9 +82,7 @@
 
     function closePopUp() {
         closeBtn.addEventListener('click', function() {
-
             popup.classList.remove('is-show');
-
         });
     }
     //ここまで起動時商品情報入力項目
@@ -75,6 +90,7 @@
 
     function addpop() {
         popup.classList.add('is-show');
+        document.getElementById('itemText').innerHTML = defaultHTML;
     }
 
 
@@ -84,7 +100,7 @@
         codeS = document.getElementById('storeCode').value;
         if (codeS !== "") {
             th_value5.value = codeS;
-            // getLen( codeS, countText2);
+            getLen( codeS, 'countText2');
         }else{
             alert('商品コードを入力してください');
             return false;
@@ -195,6 +211,7 @@
 
             if(radioId == 1){
                 document.getElementById('tireTable').remove();
+
             }
         }
         
@@ -254,7 +271,7 @@
         var titleText = titleArray.join(" ");
         th_value2.value = titleText;
         document.getElementById('itemProduct').innerText = titleText;
-        // getLen(titleText, fontCount);
+        getLen(titleText, 'fontCount');
         
 
         //商品説明欄への出力(HTML形式)
@@ -282,20 +299,28 @@
             if(document.getElementsByName("table1_cell_value")[i].value ==""){
                 alert("未入力項目があります。");
                 return false;
+            }else if(document.getElementsByName("table1_cell_value")[i].style.backgroundColor == "red"){
+                alert("文字数がオーバーしています。");
+                return false;
             }
         }
 
-        var table = document.getElementById('table1');//id=table1という要素を取得
-        var row = table.insertRow(-1);//id=table1の中にtrタグを最後の子要素として追加
-        var cells = new Array();
-        for(var i = 0; i < table.rows[0].cells.length; i++){
-            cells[i] = row.insertCell(-1);//新しく作ったrowの中にtrタグを最後の子要素として追加
-            cells[i].innerText=document.getElementsByName("table1_cell_value")[i].value;
+        var submitCheck = window.confirm( 'この内容で登録してよろしいですか？');
+        if (submitCheck) {
+            var table = document.getElementById('table1');//id=table1という要素を取得
+            var row = table.insertRow(-1);//id=table1の中にtrタグを最後の子要素として追加
+            var cells = new Array();
+            for(var i = 0; i < table.rows[0].cells.length; i++){
+                cells[i] = row.insertCell(-1);//新しく作ったrowの中にtrタグを最後の子要素として追加
+                cells[i].innerText=document.getElementsByName("table1_cell_value")[i].value;
+            }
+            document.syohinData.reset();
+            document.csvData.reset();
+            document.getElementById('itemText').innerHTML = defaultHTML;
+            popup.classList.add('is-show');
+        }else{
+            return false;
         }
-        document.syohinData.reset();
-        document.csvData.reset();
-        document.getElementById('itemText').innerHTML = defaultHTML;
-        popup.classList.add('is-show');
     }
     //ここまで表の列追加のコード
 

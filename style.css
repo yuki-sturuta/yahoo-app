@@ -357,7 +357,8 @@
   }
 
   .csvIndex input{
-    margin-bottom: 3px
+    margin-bottom: 3px;
+    margin-right: 2px;
   }
 
   .csvIndex span {
@@ -398,3 +399,12 @@
     border: 1px solid #aaa;
   }
 
+@media screen and (max-width:817px){
+  #th_value2 {
+    width: 500px;
+  }
+
+  #th_value4 {
+    width: 500px;
+  }
+}

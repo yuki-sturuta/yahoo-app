@@ -244,29 +244,38 @@
             }
         }
 
-            //適合車種を入力している場合出力する
-             var carConform = document.getElementById('carConform').value.trim().replace(/　/g," ");
-            if (carConform !== "") {
-                carConform += '等';
-                titleArray.push(carConform);
-                document.getElementById('itemCaConform').innerText = carConform;
-            }
+        //ラジオボタンで小物を選択した場合
+        if(radioId == 3){
+                document.getElementById('tireTable').remove();
+                document.getElementById('wheelTable').remove();
+        }
 
-            //備考を入力している場合出力する
-            var remarks = document.getElementById('remarks').value.trim().replace(/　/g," ");
-            if (remarks !== "") {
-                 titleArray.push(remarks);
-            }
 
-            //店舗名を選択している場合出力する
-            if (storeText !== ""){
-                titleArray.push(storeText);
-            }
+        //適合車種を入力している場合出力する
+        var carConform = document.getElementById('carConform').value.trim().replace(/　/g," ");
+        if (carConform !== "") {
+            carConform += '等';
+            titleArray.push(carConform);
+            document.getElementById('itemCaConform').innerText = carConform;
+        }else{
+            document.getElementById('itemCaConform').parentNode.remove();
+        }
 
-            //セット名を入力している場合出力する
-            if (result !== null) {
-                titleArray.unshift(result);
-            }
+        //備考を入力している場合出力する
+        var remarks = document.getElementById('remarks').value.trim().replace(/　/g," ");
+        if (remarks !== "") {
+            titleArray.push(remarks);
+        }
+
+        //店舗名を選択している場合出力する
+        if (storeText !== ""){
+            titleArray.push(storeText);
+        }
+
+        //セット名を入力している場合出力する
+        if (result !== null) {
+            titleArray.unshift(result);
+        }
 
         var titleText = titleArray.join(" ");
         th_value2.value = titleText;

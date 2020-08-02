@@ -68,6 +68,14 @@
       }
     }
 
+    // function addWheelfield() {
+    //     var wheelfield = 2;
+    //     var addWheelJ = document.getElementById('wheelJ');
+    //     var cloneWheelJ = addWheelJ.cloneNode(true);
+    //     cloneWheelJ.id += wheelfield;
+    //     addWheelJ.insertAdjacentHTML(cloneWheelJ);
+    // }
+
 
     //起動時商品情報入力項目
     var defaultHTML = document.getElementById('itemText').innerHTML;

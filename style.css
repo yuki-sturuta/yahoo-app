@@ -281,6 +281,12 @@
     height: 22px;
   }
 
+  .popup-block span {
+    margin-left: 2px;
+    font-size: 12px;
+    vertical-align: baseline;
+  }
+
   .popup-block input, .popup-block select {
     height: 22px;
     margin-top: 5px;   

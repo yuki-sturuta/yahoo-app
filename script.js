@@ -55,9 +55,9 @@
       }
       document.getElementById(field).innerText = result;
 
-      if (field == 'fontCount' && result > 60 ) {
+      if (field == 'fontCount' && result > 65 ) {
           th_value2.style.backgroundColor = "red";
-      }else if (field == 'fontCount' && result <= 60 ){
+      }else if (field == 'fontCount' && result <= 65 ){
           th_value2.style.backgroundColor = "";
       }
 
@@ -67,15 +67,6 @@
           th_value5.style.backgroundColor = "";
       }
     }
-
-    // function addWheelfield() {
-    //     var wheelfield = 2;
-    //     var addWheelJ = document.getElementById('wheelJ');
-    //     var cloneWheelJ = addWheelJ.cloneNode(true);
-    //     cloneWheelJ.id += wheelfield;
-    //     addWheelJ.insertAdjacentHTML(cloneWheelJ);
-    // }
-
 
     //起動時商品情報入力項目
     var defaultHTML = document.getElementById('itemText').innerHTML;

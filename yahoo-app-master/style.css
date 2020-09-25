@@ -1,0 +1,416 @@
+        @charset "UTF-8";
+        /* ========BASIC======== */
+  * {
+      box-sizing: border-box;
+  }
+
+  html, body, div, span, object, iframe,
+  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+  abbr, address, cite, code,
+  del, dfn, em, img, ins, kbd, q, samp,
+  small, strong, sub, sup, var,
+  b, i,
+  dl, dt, dd, ol, ul, li,
+  fieldset, form, label, legend,
+  table, caption, tbody, tfoot, thead, tr, th, td,
+  article, aside, canvas, details, figcaption, figure,
+  footer, header, hgroup, menu, nav, section, summary,
+  time, mark, audio, video {
+      margin:0;
+      padding:0;
+      border:0;
+      outline:0;
+      font-size:100%;
+      vertical-align:baseline;
+      background:transparent;
+  }
+
+  body {
+      line-height:1;
+  }
+
+  article,aside,details,figcaption,figure,
+  footer,header,hgroup,menu,nav,section {
+      display:block;
+  }
+
+  nav ul {
+      list-style:none;
+  }
+
+  blockquote, q {
+      quotes:none;
+  }
+
+  blockquote:before, blockquote:after,
+  q:before, q:after {
+      content:'';
+      content:none;
+  }
+
+  a {
+      margin:0;
+      padding:0;
+      font-size:100%;
+      vertical-align:baseline;
+      background:transparent;
+  }
+
+  /* change colours to suit your needs */
+  ins {
+      background-color:#ff9;
+      color:#000;
+      text-decoration:none;
+  }
+
+  /* change colours to suit your needs */
+  mark {
+      background-color:#ff9;
+      color:#000;
+      font-style:italic;
+      font-weight:bold;
+  }
+
+  del {
+      text-decoration: line-through;
+  }
+
+  abbr[title], dfn[title] {
+      border-bottom:1px dotted;
+      cursor:help;
+  }
+
+  table {
+      border-collapse:collapse;
+      border-spacing:0;
+  }
+
+  /* change border colour to suit your needs */
+  hr {
+      display:block;
+      height:1px;
+      border:0;  
+      border-top:1px solid #cccccc;
+      margin:1em 0;
+      padding:0;
+  }
+
+  input, select, button {
+      outline: 0;
+      vertical-align:middle;
+      border: none;
+      padding: 0;
+      margin: 0;
+      border: 1px solid gray;
+  }
+
+  input {
+    padding-left: 1px;
+  }
+
+  html {
+      overflow-y:scroll;
+  }
+
+  br {
+      letter-spacing:normal;
+  }
+
+  a {
+      color:#0089a1;
+      text-decoration:none;
+  }
+
+  a:hover {
+      color:#0089a1;
+      text-decoration:none;
+  }
+
+  img {
+    border:0;
+    vertical-align:bottom;
+  }
+
+        /* ========TEMPLATE LAYOUT======== */
+
+  #contents {
+    clear:both;
+  }
+
+  #main {
+    padding:10px;
+  }
+
+  #main .textIndex {
+    max-width: 900px;
+    margin: 0 auto 30px;
+  }
+
+ /* ========MAIN CONTENTS CUSTOMIZE======== */
+   h2 {
+    margin-bottom:5px;
+    padding:5px 0;
+    font-size:16px;
+    border-bottom:3px double #ccc;
+  }
+
+   h3 {
+    margin-bottom:5px;
+    padding:5px;
+    font-size:14px;
+    border-left:5px solid #0089a1;
+    border-bottom:1px dotted #ccc;
+  }
+
+  h4 {
+    margin-bottom:5px;
+    padding:5px;
+    font-size:13px;
+    color:#fff;
+    background:#0089a1;
+  }
+
+  #main p {
+    margin:0 0 1em 0;
+  }
+
+  /* INFORMATION CUSTOMIZE */
+  * html body #main dl.information dd div {
+      display:inline-block;
+  }
+
+  #main table {
+    width:100%;
+    border-collapse:collapse;
+  }
+
+  #main table th {
+    padding:5px;
+    font-size:12px;
+    text-align:left;
+    border:1px solid #aaa;
+    background:#f0f7fc;
+  }
+
+  #main table td {
+    padding:5px;
+    font-size:12px;
+    text-align:left;
+    border:1px solid #aaa;
+  }
+
+  .popup {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: .6s;
+  }
+  .popup.is-show {
+    opacity: 1;
+    visibility: visible;
+  }
+  .popup-inner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 93%;
+    max-width: 700px;
+    padding: 10px;
+    background-color: #fff;
+    z-index: 2;
+  }
+
+  .popup-inner img {
+    width: 100%;
+  }
+
+  .close-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    line-height: 35px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .close-btn i {
+    font-size: 20px;
+    color: #333;
+  }
+
+  .black-background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.8);
+    z-index: 1;
+  }
+
+  .storeRadio {
+    display: block;
+    font-size: 15px;
+  }
+
+  .storeRadio input {
+    position: relative;
+    top: -3px;
+  }
+
+  .storeRadio span {
+    margin-right: 13px;
+    margin-left: 3px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .popup-block {
+    margin-top: 10px;
+  }
+
+  select, input {
+    height: 22px;
+  }
+
+  .popup-block span {
+    margin-left: 2px;
+    font-size: 12px;
+    vertical-align: baseline;
+  }
+
+  .popup-block input, .popup-block select {
+    height: 22px;
+    margin-top: 5px;   
+  }
+
+  .popup-block input:focus, .popup-block select:focus {
+    border: 1px solid #000000;
+  }
+
+  .popup-block p {
+    display: inline-block;
+    vertical-align: baseline;
+    font-size: 13px;
+    margin:0 5px 0 13px;
+    width: 120px;
+  }
+
+  .popup-block .required:after{
+    content: "*";
+    color: red;
+    font-size: 11px;
+    font-weight: bold;
+    padding-left: 2px;
+  }
+
+  #storeCode {
+    width: 200px;
+  }
+
+  #storeName{
+    width: 100px;
+  }
+
+  #wheelInti, #wheelJ, #wheelOffset, #wheelPcd, #wheelH,
+  #tireGroove, #tireBirth {
+    width: 80px;
+  }
+
+  #wheelOffset {
+    width: 43px;
+  }
+
+  #carConform, #remarks {
+    width: 300px;
+  }
+
+  .btn-group {
+    margin-top: 15px;
+    text-align: center;
+  }
+
+  .btn-group button {
+    width: 90px;
+    height: 30px;
+    background-color: skyblue;
+    font-size: 15px;
+    border-radius: 5px;
+    color: white;
+  }
+
+  .btn-group input {
+    width: 70px;
+    height:25px;
+    background-color: red;
+    font-size: 13px;
+    margin-left: 20px;
+    border-radius: 5px;
+    color: white;
+  }
+
+  .btn-group .form-back {
+    width: 120px;
+    background-color: gray;
+  }
+
+  .csvIndex input{
+    margin-bottom: 3px;
+    margin-right: 2px;
+  }
+
+  .csvIndex span {
+    margin-bottom: 3px;
+    font-size: 12px;
+    vertical-align: middle;
+    width: 150px;
+    display: inline-block;
+  }
+
+  .csvIndex .count-block {
+    width: unset;
+    display: inline;
+  }
+
+  #th_value2 {
+    width: 600px;
+  }
+
+  #th_value4 {
+    width: 600px;
+    height: 200px;
+  }
+
+  .csvIndex .descripton {
+    vertical-align: top;
+    margin-top: 5px;
+  }
+
+  #textlengt, #textlength2 {
+    margin-left: 5px;
+  }
+
+  .csvDownload {
+    padding: 3px;
+    margin: 0;
+    background-color: #f0f0f0;
+    border: 1px solid #aaa;
+  }
+
+@media screen and (max-width:817px){
+  #th_value2 {
+    width: 500px;
+  }
+
+  #th_value4 {
+    width: 500px;
+  }
+}
